@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aarjav Jain - Portfolio</title>
+    <style>
+        /* Global Styles */
+      /* Global Styles */
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #F4F4F9;
+    color: #333;
+}
+
+/* Hero Section */
+.hero {
+    background-image: url('epic.png');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    text-align: center;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.2);
+    z-index: 0; /* Ensure the overlay is below */
+}
+
+/* Hero Section Text */
+.hero h1,
+.hero p,
+.hero button {
+    position: relative; /* Make sure content is above the overlay */
+    z-index: 2;
+}
+
+.hero button {
+    padding: 12px 25px;
+    font-size: 1.1em;
+    border: none;
+    border-radius: 25px;
+    background-color: #6C63FF;
+    color: #fff;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.hero button:hover {
+    background-color: #4A40D6;
+}
+
+/* Skills Section */
+.skills {
+    background-color: #F9F9F9;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.skills h2 {
+    font-size: 2.5em;
+    margin-bottom: 30px;
+    color: #6C63FF;
+}
+
+.skills .skill {
+    display: inline-block;
+    background-color: #FFFFFF;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 10px;
+    width: 220px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    transition: 0.3s ease;
+}
+
+.skills .skill:hover {
+    background-color: #6C63FF;
+    color: #fff;
+}
+
+.skills .skill h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+                /* Modal Background */
+            .popup-overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.7);
+                display: none;
+                justify-content: center;
+                align-items: center;
+                z-index: 9999;
+            }
+
+            /* Modal Content */
+            .popup-content {
+                background-color: #fff;
+                padding: 20px 30px;
+                border-radius: 15px;
+                box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+                max-width: 500px;
+                text-align: center;
+                position: relative;
+                animation: slideDown 0.5s ease forwards;
+            }
+
+            @keyframes slideDown {
+                from {
+                    transform: translateY(-50px);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateY(0);
+                    opacity: 1;
+                }
+    }
+
+            /* Typewriter Text */
+            .typewriter {
+                font-family: 'Arial', sans-serif;
+                font-size: 1.3em;
+                line-height: 1.8;
+                color: #333;
+            }
+
+            .typewriter .highlight {
+                color: #6C63FF;
+                font-weight: bold;
+                background-color: #F3F4FF;
+                padding: 2px 5px;
+                border-radius: 5px;
+            }
+
+            /* Close Button */
+            .close-btn {
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                background-color: transparent;
+                border: none;
+                font-size: 1.5em;
+                cursor: pointer;
+                color: #6C63FF;
+                transition: 0.3s ease;
+            }
+
+            .close-btn:hover {
+                color: #FF6347;
+            }
+
+               /* Profile Section */
+.profile-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 50px 0;
+    perspective: 1000px; /* Added to create 3D effect */
+    position: relative;
+    padding: 20px; /* Optional: to add some spacing around the content */
+    z-index: 1; /* Ensure the content stays on top of the background */
+}
+
+/* Add the transparent background image using a pseudo-element */
+.profile-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('background2.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 1; /* Control the transparency of the background image */
+    z-index: -1; /* Ensure this stays behind the content */
+}
+
+/* Profile Image Wrapper */
+.profile-img-wrapper {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    transform-style: preserve-3d;
+    animation: flip 10s infinite; /* Flip every 10 seconds */
+}
+
+.profile-img {
+    border-radius: 50%;
+    border: 5px solid #6C63FF;
+    width: 150px;
+    height: 150px;
+    transition: transform 0.5s ease;
+    transform: rotateY(0deg);
+    backface-visibility: hidden; /* Hide the back face when flipped */
+}
+
+.profile-img-wrapper:hover .profile-img {
+    transform: rotateY(180deg); /* Flip on hover */
+}
+
+.profile-img-wrapper:after {
+    content: "Hard working!";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #6C63FF;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2em;
+    border-radius: 50%;
+    transform: rotateY(180deg); /* Position the text at the back */
+    backface-visibility: hidden;
+}
+
+/* Profile Text */
+.profile-text {
+    margin-left: 20px;
+    text-align: left;
+    background-color: #FFFFFF; /* Solid background for the profile text */
+    padding: 20px;
+    border-radius: 10px;
+    color: #333;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+}
+
+.profile-text h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.profile-text p {
+    font-size: 1.1em;
+    line-height: 1.6;
+}
+
+/* Animation for continuous flip */
+@keyframes flip {
+    0% {
+        transform: rotateY(0deg);
+    }
+    50% {
+        transform: rotateY(180deg);
+    }
+    100% {
+        transform: rotateY(360deg);
+    }
+}
+
+/* Popup Styles */
+.popup-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 400px;
+    text-align: center;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 1.5em;
+    cursor: pointer;
+}
+
+.close-btn:hover {
+    color: red;
+}
+
+                
+                /* Projects Section */
+                .projects-section {
+                background-color: #FFFFFF;
+                padding: 60px 20px;
+                text-align: center;
+            }
+
+            .projects-section h2 {
+                font-size: 2.5em;
+                margin-bottom: 40px;
+                color: #6C63FF;
+            }
+
+            .projects-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 20px;
+                max-width: 1200px;
+                margin: 0 auto;
+            }
+
+            .project-card {
+                background-color: #F9F9F9;
+                border-radius: 15px;
+                padding: 20px;
+                box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.1);
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+                position: relative;
+            }
+
+            .project-card:hover {
+                transform: translateY(-10px);
+                box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+            }
+              /* Modal background */
+            #imageModal {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.8);
+                z-index: 999;
+                justify-content: center;
+                align-items: center;
+            }
+
+            /* Modal content */
+            #modalContent {
+                position: relative;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            /* Close button */
+            #closeBtn {
+                position: absolute;
+                top: 10px;
+                right: 25px;
+                color: white;
+                font-size: 30px;
+                font-weight: bold;
+                cursor: pointer;
+            }
+
+            #closeBtn:hover {
+                color: red;
+            }
+
+            /* Image styling */
+            #credentialsImage {
+                max-width: 80%;
+                max-height: 80%;
+            }
+            .project-card h3 {
+                font-size: 1.8em;
+                margin-bottom: 15px;
+                color: #6C63FF;
+            }
+
+            .project-card p {
+                font-size: 1.1em;
+                color: #333;
+            }
+
+            .project-card a {
+                text-decoration: none;
+                color: #6C63FF;
+                font-weight: bold;
+                position: absolute;
+                bottom: 15px;
+                right: 15px;
+                transition: color 0.3s ease;
+            }
+
+            .project-card a:hover {
+                color: #4A40D6;
+            }
+                /* Contact Section */
+                .contact-section {
+                    background-color: #F9F9F9;
+                    padding: 60px 20px;
+                    text-align: center;
+                }
+
+        .contact-section h2 {
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            color: #6C63FF;
+        }
+
+        .contact-section button {
+            padding: 12px 25px;
+            font-size: 1.1em;
+            border: none;
+            border-radius: 25px;
+            background-color: #6C63FF;
+            color: #fff;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        .contact-section button:hover {
+            background-color: #4A40D6;
+        }
+
+        /* Footer Section */
+        footer {
+            background-color: #333;
+            padding: 20px;
+            text-align: center;
+        }
+
+        footer p {
+            margin: 0;
+            color: #fff;
+        }
+
+        footer a {
+            margin: 0 10px;
+            font-size: 1.5em;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: #6C63FF;
+        }
+    </style>
+</head>
+<body>
+        <!-- Hero Section -->
+        <div class="hero">
+            <div>
+                <h1>Aarjav Jain</h1>
+                <p>Innovator | Developer | B.Tech Student</p>
+                <button onclick="scrollToSkills()">Explore My Skills</button>
+            </div>
+        </div>
+    <!-- Profile Section -->
+ <div class="profile-section">
+    <div class="profile-img-wrapper">
+        <img src="profile pic.jpeg" alt="Profile Picture" class="profile-img">
+    </div>
+    <div class="profile-text">
+        <h2>About Me</h2>
+        <p class="typewriter">
+            Hi, I'm Aarjav, an <span class="highlight">intern</span> at TBI GEU.<br>
+            Passionate <span class="highlight">open-source contributor</span> at GSSOC.<br>
+            Worked with the <span class="highlight">International Organization AIESEC</span>.<br>
+            I love exploring AI, blockchain, and web development!
+        </p>     
+        <!-- Popup Structure -->
+        <div class="popup-overlay" id="popup">
+            <div class="popup-content">
+                <button class="close-btn" onclick="closePopup()">&times;</button>
+                <p class="typewriter">
+                    Hi, I'm Aarjav, an <span class="highlight">intern</span> at TBI GEU.<br>
+                    Passionate <span class="highlight">open-source contributor</span> at GSSOC.<br>
+                    Worked with the <span class="highlight">International Organization AIESEC</span>.<br>
+                    I love exploring AI, blockchain, and web development!
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+            <script>
+                // Show the popup
+                function showPopup() {
+                    document.getElementById('popup').style.display = 'flex';
+                }
+            
+                // Close the popup
+                function closePopup() {
+                    document.getElementById('popup').style.display = 'none';
+                }
+            
+                // Auto-show the popup after page load
+                window.onload = function() {
+                    setTimeout(showPopup, 1000); // Delay of 1 second
+                };
+                        
+                function scrollToSkills() {
+                   document.getElementById('skills').scrollIntoView({ behavior: 'smooth' });
+    }           
+                function showModal(imageSrc) {
+                    document.getElementById('credentialsImage').src = imageSrc;
+                    document.getElementById('imageModal').style.display = 'flex';
+                }
+
+                function closeModal() {
+                    document.getElementById('imageModal').style.display = 'none';
+                }
+            </script>
+        </div>
+    </div>
+
+  <!-- Skills Section -->
+<div class="skills" id="skills">
+    <h2>My Skills</h2>
+    <div class="skill">
+        <h3>Web Development</h3>
+        <p>HTML, CSS, JavaScript, React, Node.js</p>
+    </div>
+    <div class="skill">
+        <h3>Machine Learning</h3>
+        <p>TensorFlow, Scikit-Learn, Data Analysis</p>
+    </div>
+    <div class="skill">
+        <h3>Blockchain</h3>
+        <p>Smart Contracts, Solidity, Ethereum</p>
+    </div>
+</div>
+    <!-- Projects Section -->
+<div class="projects-section">
+    <h2>Hands-on Experience</h2>
+    <div class="projects-grid">
+        
+        <!-- Instagram Clone Project -->
+        <div class="project-card">
+            <h3>Instagram Clone</h3>
+            <p>Built a feature-rich social media clone.</p>
+            <a href="https://instagram-clone-pivuwgzrn-aarjav-jain-2210s-projects.vercel.app/">View Project &rarr;</a>
+        </div>
+        
+        <!-- GSSOC Contributor Project with Modal -->
+        <div class="project-card">
+            <h3>GSSOC Contributor</h3>
+            <p>Contributed to the GSSOC open-source community.</p>
+            <a href="javascript:void(0);" onclick="showModal('gssoc-img.jpeg')">View Credentials &rarr;</a>
+        </div>
+        
+        <!-- Modal Structure for GSSOC -->
+        <div id="imageModal" class="modal" style="display:none;">
+            <div id="modalContent" class="modal-content">
+                <span id="closeBtn" onclick="closeModal()">&times;</span>
+                <img id="credentialsImage" src="" alt="Credentials Image" />
+            </div>
+        </div>
+        
+        <!-- AI for Everyone Project -->
+        <div class="project-card">
+            <h3>AI for Everyone</h3>
+            <p>Explored foundational AI concepts through Andrew Ng's course.</p>
+            <a href="https://www.coursera.org/account/accomplishments/verify/1FIIFD8ER2O0?utm_source%3Dandroid%26utm_medium%3Dcertificate%26utm_content%3Dcert_image%26utm_campaign%3Dsharing_cta%26utm_product%3Dcourse">View Credentials &rarr;</a>
+        </div>
+        
+        <!-- Tic Tac Toe Game Project -->
+        <div class="project-card">
+            <h3>Tic Tac Toe Game</h3>
+            <p>Built a classic Tic Tac Toe game using JavaScript.</p>
+            <a href="https://aarjav-jain-2210.github.io/TIC-TAC-TOE/tictac.html">View Project &rarr;</a>
+        </div>
+        
+        <!-- Advanced Calculator Project -->
+        <div class="project-card">
+            <h3>Advanced Calculator</h3>
+            <p>Developed a multi-functional calculator app.</p>
+            <a href="https://aarjav-jain-2210.github.io/ADV-CALCULATOR/calculator.html">View Project &rarr;</a>
+        </div>
+    </div>
+</div>
+
+<!-- contact Section -->
+    <div class="contact-section">
+        <h2>Get in Touch</h2>
+        <p>I'd love to connect with you! Reach out to me via email or WhatsApp.</p>
+        <button onclick="window.location.href='mailto:aarjavjain2210@gmail.com?subject=Let\'s%20Connect&body=Hi%20Aarjav,'">
+            Email Me
+        </button>
+        <button onclick="window.open('https://wa.me/917017589301', '_blank')">
+            Message Me on WhatsApp
+        </button>
+    </div>
+    
+    
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2024 Aarjav Jain | All Rights Reserved</p>
+        <a href="https://github.com/Aarjav-Jain-2210" target="_blank">GitHub</a>
+        <a href="https://www.linkedin.com/in/aarjav-jain-69502a212" target="_blank">LinkedIn</a>
+        <a href="https://x.com/AarjavJ60903516" target="_blank">Twitter</a>
+    </footer>
+
+</body>
+</html>
